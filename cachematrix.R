@@ -6,13 +6,18 @@
 makeCacheMatrix <- function(x = matrix()) {
     ##message("starting to solve")
     m <- NULL
+    ## cache the function for later retrieval
     set <- function(y) {
         x <<- y
         m <<- NULL
     }
+    ## retrieve the function from the cache
     get <- function() x
+    ## cache the result of the inverse for later retrieval
     setsolve <- function(solve,x) m <<- solve
+    ## retrieve the inverse
     getsolve <- function() m
+    ## the list of available functions
     list(set = set, get = get, 
         setsolve = setsolve, getsolve = getsolve)
 }
